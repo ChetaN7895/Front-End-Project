@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+/* For normal text */
+.text-primary {
+  color: #1a1a1a; /* Dark gray for primary text */
+}
+
+.text-secondary {
+  color: #4a5568; /* Medium gray for secondary text */
+}
+
+/* For dark backgrounds */
+.text-on-dark {
+  color: #f8fafc; /* Light color for dark backgrounds */
+}
+
+/* For light backgrounds */
+.text-on-light {
+  color: #1e293b; /* Dark color for light backgrounds */
+}
+
+/* Accessibility-focused link colors */
+.link {
+  color: #2563eb; /* Blue-600 */
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: #1d4ed8; /* Blue-700 */
+}
+
+.link:focus {
+  outline: 2px solid #3b82f6; /* Blue-500 */
+  outline-offset: 2px;
+}

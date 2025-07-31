@@ -1,0 +1,73 @@
+import { YearlySales } from "../types/sales";
+
+export const MOCK_SALES_DATA: YearlySales[] = [
+  {
+    year: 2022,
+    data: [
+      { month: 'Jan', sales: 4000 },
+      { month: 'Feb', sales: 3000 },
+      { month: 'Mar', sales: 5000 },
+      { month: 'Apr', sales: 2780 },
+      { month: 'May', sales: 1890 },
+      { month: 'Jun', sales: 2390 },
+      { month: 'Jul', sales: 3490 },
+      { month: 'Aug', sales: 4000 },
+      { month: 'Sep', sales: 6000 },
+      { month: 'Oct', sales: 7000 },
+      { month: 'Nov', sales: 8000 },
+      { month: 'Dec', sales: 9000 },
+    ],
+  },
+  {
+    year: 2023,
+    data: [
+      { month: 'Jan', sales: 5000 },
+      { month: 'Feb', sales: 4000 },
+      { month: 'Mar', sales: 6000 },
+      { month: 'Apr', sales: 3780 },
+      { month: 'May', sales: 2890 },
+      { month: 'Jun', sales: 3390 },
+      { month: 'Jul', sales: 4490 },
+      { month: 'Aug', sales: 5000 },
+      { month: 'Sep', sales: 7000 },
+      { month: 'Oct', sales: 8000 },
+      { month: 'Nov', sales: 9000 },
+      { month: 'Dec', sales: 10000 },
+    ],
+  },
+  {
+    year: 2024,
+    data: [
+      { month: 'Jan', sales: 6000 },
+      { month: 'Feb', sales: 5000 },
+      { month: 'Mar', sales: 7000 },
+      { month: 'Apr', sales: 4780 },
+      { month: 'May', sales: 3890 },
+      { month: 'Jun', sales: 4390 },
+      { month: 'Jul', sales: 5490 },
+      { month: 'Aug', sales: 6000 },
+      { month: 'Sep', sales: 8000 },
+      { month: 'Oct', sales: 9000 },
+      { month: 'Nov', sales: 10000 },
+      { month: 'Dec', sales: 11000 },
+    ],
+  },
+
+  {
+    year: 2025,
+    data: [
+      { month: 'Jan', sales: 7000 },
+      { month: 'Feb', sales: 6000 },
+      { month: 'Mar', sales: 8000 },
+      { month: 'Apr', sales: 5780 },
+      { month: 'May', sales: 4890 },
+      { month: 'Jun', sales: 5390 },
+      { month: 'Jul', sales: 6490 },
+      { month: 'Aug', sales: 7000 },
+      { month: 'Sep', sales: 9000 },
+      { month: 'Oct', sales: 10000 },
+      { month: 'Nov', sales: 11000 },
+      { month: 'Dec', sales: 12000 },
+    ],
+  },
+];
