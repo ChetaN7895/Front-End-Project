@@ -1,20 +1,53 @@
-import React from 'react';
-import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { YearlySales } from '../types/sales';
+import React from "react";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import { YearlySales } from "../types/sales";
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#A28DFF', '#FF6B6B'];
+const COLORS = [
+  "#0088FE",
+  "#00C49F",
+  "#FFBB28",
+  "#FF8042",
+  "#A28DFF",
+  "#FF6B6B",
+];
 
 interface PieChartComponentProps {
   data: YearlySales[];
   selectedYear: number;
 }
 
-export const PieChartComponent: React.FC<PieChartComponentProps> = ({ 
-  data, 
-  selectedYear 
+interface LabelProps {
+  cx: number;
+  cy: number;
+  midAngle: number;
+  innerRadius: number;
+  outerRadius: number;
+  percent: number;
+  name: string;
+  value: number;
+}
+
+export const PieChartComponent: React.FC<PieChartComponentProps> = ({
+  data,
+  selectedYear,
 }) => {
-  const yearData = data.find((item) => item.year === selectedYear)?.data || [];
-  const totalSales = yearData.reduce((sum, item) => sum + item.sales, 0);
+  // Create a safe copy of the data to prevent mutation
+  const yearData = React.useMemo(() => {
+    const yearEntry = data.find((item) => item.year === selectedYear);
+    return yearEntry ? [...yearEntry.data] : [];
+  }, [data, selectedYear]);
+
+  const totalSales = React.useMemo(
+    () => yearData.reduce((sum, item) => sum + item.sales, 0),
+    [yearData]
+  );
 
   // Custom label component
   const renderCustomizedLabel = ({
@@ -24,10 +57,9 @@ export const PieChartComponent: React.FC<PieChartComponentProps> = ({
     innerRadius,
     outerRadius,
     percent,
-    index,
     name,
-    value
-  }: any) => {
+    value,
+  }: LabelProps) => {
     const RADIAN = Math.PI / 180;
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
@@ -63,25 +95,25 @@ export const PieChartComponent: React.FC<PieChartComponentProps> = ({
             label={renderCustomizedLabel}
           >
             {yearData.map((entry, index) => (
-              <Cell 
-                key={`cell-${index}`} 
-                fill={COLORS[index % COLORS.length]} 
+              <Cell
+                key={`cell-${index}`}
+                fill={COLORS[index % COLORS.length]}
               />
             ))}
           </Pie>
-          <Tooltip 
+          <Tooltip
             formatter={(value: number, name: string) => [
               `$${value.toLocaleString()}`,
-              `${name} (${((Number(value) / totalSales) * 100).toFixed(1)}%)`
+              `${name} (${((Number(value) / totalSales) * 100).toFixed(1)}%)`,
             ]}
             contentStyle={{
-              backgroundColor: '#1e293b',
-              borderColor: '#334155',
-              borderRadius: '0.5rem',
-              color: '#f8fafc'
+              backgroundColor: "#1e293b",
+              borderColor: "#334155",
+              borderRadius: "0.5rem",
+              color: "#f8fafc",
             }}
           />
-          <Legend 
+          <Legend
             formatter={(value, entry, index) => (
               <span className="text-sm text-gray-600">
                 {value} (${yearData[index]?.sales.toLocaleString()})
