@@ -1,3 +1,34 @@
+<img width="1920" height="1008" alt="screenshot (2)" src="https://github.com/user-attachments/assets/ff3ba136-cb9e-468b-b2c2-b2cd088344e0" />
+
+
+# Sales Dashboard
+
+
+A responsive sales analytics dashboard built with Next.js, TypeScript, and Recharts that visualizes sales data with interactive filtering capabilities.
+
+## Features
+
+- 📊 Multiple chart types (Bar, Line, Pie)
+- 🔍 Filter by minimum sales threshold
+- 📅 Filter by year selection
+- 📱 Fully responsive design
+- 🎨 Customizable theme
+- 🛠 Type-safe codebase
+- ⚡ Optimized performance
+
+## Technologies Used
+
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Charts**: Recharts
+- **State Management**: React Hooks
+- **Build Tool**: Vite (via Next.js)
+- **Linting**: ESLint + Prettier
+
+## Project Structure
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
