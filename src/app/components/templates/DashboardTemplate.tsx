@@ -1,3 +1,6 @@
+
+
+
 import React from 'react';
 
 interface DashboardTemplateProps {
@@ -5,7 +8,10 @@ interface DashboardTemplateProps {
   title?: string;
 }
 
-export const DashboardTemplate: React.FC<DashboardTemplateProps> = ({ children, title = 'Dashboard' }) => {
+export const DashboardTemplate: React.FC<DashboardTemplateProps> = ({ 
+  children, 
+  title = 'Dashboard' 
+}) => {
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white shadow">
@@ -14,11 +20,7 @@ export const DashboardTemplate: React.FC<DashboardTemplateProps> = ({ children, 
         </div>
       </header>
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
-          <div className="border-4 border-dashed border-gray-200 rounded-lg p-6">
-            {children}
-          </div>
-        </div>
+        {children}
       </main>
     </div>
   );

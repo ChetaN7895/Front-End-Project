@@ -1,6 +1,6 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { YearlySales } from '@/types/sales';
+import { YearlySales } from '../types/sales';
 
 interface BarChartComponentProps {
   data: YearlySales[];
@@ -27,9 +27,19 @@ export const BarChartComponent: React.FC<BarChartComponentProps> = ({ data, sele
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="sales" fill="#8884d8" name="Sales" />
+          <Bar 
+            dataKey="sales" 
+            fill="#8884d8" 
+            name="Sales" 
+            radius={[4, 4, 0, 0]}
+          />
         </BarChart>
       </ResponsiveContainer>
+      {yearData.length === 0 && (
+        <div className="text-center text-gray-500 mt-4">
+          No data available for {selectedYear} with current filters
+        </div>
+      )}
     </div>
   );
 };

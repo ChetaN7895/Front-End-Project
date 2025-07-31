@@ -1,20 +1,34 @@
+
+
 import { useState } from 'react';
-import { salesData } from './data/mockSalesData';
-import FilterInput from './components/molecules/FilterInput';
-import ChartSwitcher from './components/ChartSwitcher';
+import { MOCK_SALES_DATA } from './components/lib/constants';
+import { filterSalesAboveThreshold, getAvailableYears } from './components//lib/utils';
+import { DashboardTemplate } from './components/templates/DashboardTemplate';
+import { SalesOverview } from './components/organisms/SalesOverview';
+import type { ChartType } from './components/types/sales';
 
 export default function Dashboard() {
-  const [filteredData, setFilteredData] = useState(salesData);
+  const [threshold, setThreshold] = useState(0);
+    const [chartType, setChartType] = useState<ChartType>('bar');
+  
+  // Get the latest year as default
+  const latestYear = Math.max(...MOCK_SALES_DATA.map(item => item.year));
+  const [selectedYear, setSelectedYear] = useState(latestYear);
 
-  const handleFilter = (threshold: number) => {
-    setFilteredData(salesData.filter(item => item.sales >= threshold));
-  };
+  // Filter data based on threshold
+  const filteredData = filterSalesAboveThreshold(MOCK_SALES_DATA, threshold);
 
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4">Sales Dashboard</h1>
-      <FilterInput onFilter={handleFilter} />
-      <ChartSwitcher data={filteredData} />
-    </div>
+    <DashboardTemplate title="Sales Dashboard">
+      <SalesOverview 
+        salesData={filteredData}
+        selectedYear={selectedYear}
+        onYearChange={setSelectedYear}
+        chartType={chartType}
+        onChartTypeChange={setChartType}
+        threshold={threshold}
+        onThresholdChange={setThreshold}
+      />
+    </DashboardTemplate>
   );
 }

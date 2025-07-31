@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '../atoms/Button';
-import { ChartType } from '@/types/sales';
+import { ChartType } from '../types/sales';
 
 interface ChartSelectorProps {
   activeChart: ChartType;
